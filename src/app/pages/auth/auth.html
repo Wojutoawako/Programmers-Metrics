@@ -1,0 +1,12 @@
+<div class="auth-section">
+    <h2 class="auth-section__title">Для входа введите свой gitlab-token</h2>
+    <a routerLink="generate_token">Как сгенерировать токен?</a>
+
+    <mat-form-field appearance="fill" class="auth-section__input">
+        <mat-label>Введите свой токен</mat-label>
+        <input matInput [(ngModel)]="token">
+    </mat-form-field>
+
+    <button mat-raised-button class="auth-section__button" (click)="signInToken()">Войти</button>
+    <button (click)="testApi()">Тест апи</button>
+</div>
