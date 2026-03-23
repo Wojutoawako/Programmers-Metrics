@@ -7,14 +7,14 @@ import { inject, Injectable } from '@angular/core';
 export class Gitlab {
     private gitlabUrl = 'https://gitlab.com/api/v4';
 
-    private http = inject(HttpClient)
+    private http = inject(HttpClient);
 
     private getHeaders(): { headers: HttpHeaders} {
         const token = localStorage.getItem('gitlab_token');
 
         return {
-            headers: new HttpHeaders({'Authorization': `Bearer ${token}` || ""})
-        }
+            headers: new HttpHeaders({'Authorization': `Bearer ${token}` || ''}),
+        };
     }
 
     getUser() {

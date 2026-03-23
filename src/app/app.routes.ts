@@ -5,11 +5,11 @@ import { GenerateToken } from './pages/generate-token/generate-token';
 export const routes: Routes = [
     {
         path: '',
-        component: Auth
+        component: Auth,
     },
     {
         path: 'generate_token',
-        component: GenerateToken
-    }
+        component: GenerateToken,
+    },
 ];
 
