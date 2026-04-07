@@ -1,0 +1,55 @@
+<div class="container list-header">
+    <!-- Панель управления списком: фильтрация, сортировка, переход к сравнению -->
+    <div class="list-control">
+        <input class="ipt name-search" type="text" placeholder="Поиск по имени" (input)="onNameFilterInputChanged($event)">
+        <!-- <select name="ipt select-group" id="list-sel-g">
+            <option value="test">Test</option>
+        </select> -->
+        <button class="btn compare-button" (click)="onCompareButtonClicked()">К сравнению</button>
+    </div>
+</div>
+
+<div class="container list-body">
+    <!-- Список доступных к анализу программистов -->
+    <mat-list class="list programmers-list">
+        @for (item of displayList; track item.username) {
+            <mat-card class="programmer-card">
+                <!-- Имя, псевдоним и аватар пользователя -->
+                <mat-card-title-group class="card-title-group">
+                    <mat-card-title class="card-name">{{ item.name }}</mat-card-title>
+                    <mat-card-subtitle class="card-username">Псевдоним: {{ item.username }}</mat-card-subtitle>   
+                    <img class="card-avatar" mat-card-avatar [src]="item.avatar_url" alt="User avatar">
+                </mat-card-title-group>
+                
+                <mat-card-content>
+                    <!-- Список недавних коммитов -->
+                    <mat-list class="commits-list">
+                        <span matListItemTitle>Коммиты за неделю</span>
+                        
+                        @for (commit of item.commits; track $index) {
+                            <mat-list-item class="commit-item">
+                                <a class="user-commits-item" href="{{ commit.web_url }}" target="_blank" matListItemLine>
+                                    {{ commit.title }}
+                                </a>
+                            </mat-list-item>
+                        } @empty {
+                            <mat-list-item>
+                                <span matListItemLine>Недавних коммитов нет</span>
+                            </mat-list-item>
+                        }
+                    </mat-list>
+                </mat-card-content>
+                
+                <mat-card-actions class="card-actions">
+                    <button class="btn add-to-compare-button" 
+                    (click)="onAddUserButtonClicked($event, item.username)">Добавить в сравнение</button>
+                    <button class="btn details-button" (click)="onDetailsButtonClicked(item.username)">Подробнее</button>
+                </mat-card-actions>
+            </mat-card>
+        } @empty {
+            <mat-list-item class="list-empty">
+                <span matListItemTitle>Ничего не найдено</span>
+            </mat-list-item>
+        }
+    </mat-list>
+</div>

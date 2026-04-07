@@ -1,0 +1,101 @@
+// Default styles
+* {
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.container {
+    display: block;
+}
+
+.ipt {
+    border-radius: 10px;
+    border-color: currentColor;
+    height: 30px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn {
+    border-radius: 10px;
+    border-color: currentColor;
+    height: 30px;
+
+    transition-property: background-color;
+    transition-duration: 350ms;
+}
+
+.btn:hover {
+    transition-property: background-color;
+    transition-duration: 350ms;
+    background-color: aliceblue;
+}
+
+// Personal styles
+.list-control {
+    padding: 5px;
+    display: flex;
+    gap: 3px;
+}
+
+.programmers-list {
+    padding: 0 5px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-self: flex-start;
+    gap: 10px;
+    row-gap: 10px;
+}
+
+.programmer-card {
+    padding: 5px;
+    width: 100%;
+}
+
+.card-title-group {
+    align-items: center;
+}
+
+.card-name {
+    max-width: 255ch;
+}
+
+.card-username {
+    max-width: 255ch;
+}
+
+.card-avatar {
+    margin: 0;
+}
+
+.list-empty {
+    text-align: center;
+}
+
+.card-actions {
+    justify-content: flex-end;
+    gap: 3px;
+}
+
+
+.add-to-compare-button {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.details-button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.button-active {
+    background-color: rgba($color: tomato, $alpha: 0.25);
+}
+
+.button-active:hover {
+    background-color: rgba($color: tomato, $alpha: 0.75);
+}
