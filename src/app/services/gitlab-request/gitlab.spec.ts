@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Gitlab } from './gitlab';
+import { GitLabService } from './gitlab-request.service';
 
 describe('Gitlab', () => {
-    let service: Gitlab;
+    let service: GitLabService;
 
     beforeEach(() => {
         TestBed.configureTestingModule({});
-        service = TestBed.inject(Gitlab);
+        service = TestBed.inject(GitLabService);
     });
 
     it('should be created', () => {

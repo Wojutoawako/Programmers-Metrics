@@ -1,0 +1,6 @@
+@use '@angular/material' as mat;
+
+$primary-color: #f5bf42;
+
+
+@include mat.core();

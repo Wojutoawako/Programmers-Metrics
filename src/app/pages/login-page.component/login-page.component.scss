@@ -16,18 +16,15 @@
     border-style: none;
     background-color: #f5bf42;
     border-radius: 12px;
-    width: 10%;
+    max-width: 300px;
+    min-width: 150px;
     height: 60px;
     font-size: 16px;
+    cursor: pointer;
+
+    &:disabled {
+        cursor: not-allowed;
+    }
 }
 
-.auth-section__input {
-    ::ng-deep .mat-mdc-text-field-wrapper {
-        background-color: #ffffff;
-    }
-
-    ::ng-deep .mat-mdc-input-element {
-        color: #000000;
-    }
-} 
 

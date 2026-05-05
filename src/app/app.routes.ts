@@ -1,27 +1,15 @@
 import { Routes } from '@angular/router';
-import { Auth } from './pages/auth/auth';
-import { GenerateToken } from './pages/generate-token/generate-token';
-import { ProgrammersList } from './pages/programmers-list/programmers-list';
-import { authGuard } from './guards/auth-guard';
+import { LoginPageComponent } from './pages/login-page.component/login-page.component';
+import { CallbackComponent } from './pages/callback.component/callback.component';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'list',
-        pathMatch: 'full',
+        component: LoginPageComponent,
     },
     {
-        path: 'generate_token',
-        component: GenerateToken,
-    },
-    {
-        path: 'list',
-        component: ProgrammersList,
-        canActivate: [authGuard],
-    },
-    {
-        path: '401',
-        component: Auth,
-    },
+        path: 'auth/callback',
+        component: CallbackComponent,
+    }
 ];
 
