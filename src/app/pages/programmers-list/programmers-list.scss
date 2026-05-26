@@ -1,43 +1,27 @@
-// Default styles
-* {
-    display: inline-block;
-    box-sizing: border-box;
-}
-
-.container {
-    display: block;
-}
-
-.ipt {
-    border-radius: 10px;
-    border-color: currentColor;
-    height: 30px;
-}
-
-a {
-    text-decoration: none;
-}
-
-.btn {
+.list-button {
     border-radius: 10px;
     border-color: currentColor;
     height: 30px;
 
     transition-property: background-color;
     transition-duration: 350ms;
+
+    &:hover {
+        background-color: aliceblue;
+    }
 }
 
-.btn:hover {
-    transition-property: background-color;
-    transition-duration: 350ms;
-    background-color: aliceblue;
-}
-
-// Personal styles
-.list-control {
+.header-form {
     padding: 5px;
     display: flex;
+    align-items: center;
     gap: 3px;
+}
+
+.header-form__input {
+    border-radius: 10px;
+    border-color: currentColor;
+    height: 30px;
 }
 
 .programmers-list {
@@ -51,51 +35,54 @@ a {
     row-gap: 10px;
 }
 
+.list-empty {
+    text-align: center;
+}
+
 .programmer-card {
     padding: 5px;
     width: 100%;
 }
 
-.card-title-group {
+.programmer-card__title-group {
     align-items: center;
 }
 
-.card-name {
+.programmer-card__name {
     max-width: 255ch;
 }
 
-.card-username {
+.programmer-card__username {
     max-width: 255ch;
 }
 
-.card-avatar {
+.programmer-card__avatar {
     margin: 0;
 }
 
-.list-empty {
-    text-align: center;
+.programmer-card__commit-ref {
+    text-decoration: none;
 }
 
-.card-actions {
+.programmer-card__actions {
     justify-content: flex-end;
     gap: 3px;
 }
 
-
-.add-to-compare-button {
+.programmer-card__compare-button {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
 
-.details-button {
+.programmer-card__compare-button_active {
+    background-color: rgba($color: tomato, $alpha: 0.25);
+
+    &:hover {
+        background-color: rgba($color: tomato, $alpha: 0.75);
+    }
+}
+
+.programmer-card__details-button {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-}
-
-.button-active {
-    background-color: rgba($color: tomato, $alpha: 0.25);
-}
-
-.button-active:hover {
-    background-color: rgba($color: tomato, $alpha: 0.75);
 }
