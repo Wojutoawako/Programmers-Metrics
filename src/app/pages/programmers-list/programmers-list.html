@@ -1,34 +1,36 @@
-<div class="container list-header">
+<header>
     <!-- Панель управления списком: фильтрация, сортировка, переход к сравнению -->
-    <div class="list-control">
-        <input class="ipt name-search" type="text" placeholder="Поиск по имени" (input)="onNameFilterInputChanged($event)">
-        <!-- <select name="ipt select-group" id="list-sel-g">
-            <option value="test">Test</option>
-        </select> -->
-        <button class="btn compare-button" (click)="onCompareButtonClicked()">К сравнению</button>
-    </div>
-</div>
+    <form [formGroup]="filterFormGroup" class="header-form">
+        <input
+            [formControl]="filterFormGroup.controls.nameFilter"
+            name="nameFilter"
+            class="header-form__input"
+            type="text" placeholder="Поиск по имени"
+        >
+        <button class="list-button header-form__compare-button" (click)="onCompareButtonClicked()">К сравнению</button>
+    </form>
+</header>
 
-<div class="container list-body">
+<body>
     <!-- Список доступных к анализу программистов -->
     <mat-list class="list programmers-list">
-        @for (item of displayList; track item.username) {
+        @for (item of filteredProgrammersList(); track item.username) {
             <mat-card class="programmer-card">
                 <!-- Имя, псевдоним и аватар пользователя -->
-                <mat-card-title-group class="card-title-group">
-                    <mat-card-title class="card-name">{{ item.name }}</mat-card-title>
-                    <mat-card-subtitle class="card-username">Псевдоним: {{ item.username }}</mat-card-subtitle>   
-                    <img class="card-avatar" mat-card-avatar [src]="item.avatar_url" alt="User avatar">
+                <mat-card-title-group class="programmer-card__title-group">
+                    <mat-card-title class="programmer-card__name">{{ item.name }}</mat-card-title>
+                    <mat-card-subtitle class="programmer-card__username">Псевдоним: {{ item.username }}</mat-card-subtitle>
+                    <img class="programmer-card__avatar" mat-card-avatar [src]="item.avatar_url" alt="User avatar">
                 </mat-card-title-group>
-                
+
                 <mat-card-content>
                     <!-- Список недавних коммитов -->
-                    <mat-list class="commits-list">
+                    <mat-list class="programmer-card__commit-list">
                         <span matListItemTitle>Коммиты за неделю</span>
-                        
+
                         @for (commit of item.commits; track $index) {
-                            <mat-list-item class="commit-item">
-                                <a class="user-commits-item" href="{{ commit.web_url }}" target="_blank" matListItemLine>
+                            <mat-list-item class="programmer-card__commit">
+                                <a class="programmer-card__commit-ref" href="{{ commit.web_url }}" target="_blank" matListItemLine>
                                     {{ commit.title }}
                                 </a>
                             </mat-list-item>
@@ -39,11 +41,15 @@
                         }
                     </mat-list>
                 </mat-card-content>
-                
-                <mat-card-actions class="card-actions">
-                    <button class="btn add-to-compare-button" 
-                    (click)="onAddUserButtonClicked($event, item.username)">Добавить в сравнение</button>
-                    <button class="btn details-button" (click)="onDetailsButtonClicked(item.username)">Подробнее</button>
+
+                <mat-card-actions class="programmer-card__actions">
+                    <button
+                        class="list-button programmer-card__compare-button"
+                        [class.programmer-card__compare-button_active]="isCompareButtonActive()"
+                        (click)="onAddUserButtonClicked($event, item.username)">
+                            {{ isCompareButtonActive() ? 'Убрать из сравнения' : 'Добавить в сравнение' }}
+                    </button>
+                    <button class="list-button programmer-card__details-button" (click)="onDetailsButtonClicked(item.username)">Подробнее</button>
                 </mat-card-actions>
             </mat-card>
         } @empty {
@@ -52,4 +58,4 @@
             </mat-list-item>
         }
     </mat-list>
-</div>
+</body>
