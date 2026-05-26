@@ -13,7 +13,7 @@ export class CallbackComponent {
     ngOnInit() {
 
         const code = new URLSearchParams(window.location.search).get('code');
-        
+
         if (code) {
             this.gitlab.exchangeCode(code).subscribe({
                 next: (res: any) => {
